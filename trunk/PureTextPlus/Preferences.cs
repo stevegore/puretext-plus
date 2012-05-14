@@ -3,6 +3,7 @@
     
     Copyright (C) 2003 Steve P. Miller, http://www.stevemiller.net/puretext/
     Copyright (C) 2011 Melloware, http://www.melloware.com
+    Copyright (C) 2012 Anderson Direct Marketing, http://www.andersondm.com
     
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -48,14 +49,24 @@ namespace PureTextPlus
 		
 		// fields
 		public bool PlaySound = false;
+		public bool Startup = false;
+		public bool TrayIconVisible = true;
+		public bool PasteIntoActiveWindow = true;
 		public bool ModifierWindows = true;
 		public bool ModifierShift = false;
 		public bool ModifierControl = false;
 		public bool ModifierAlt = false;
-		public bool Startup = false;
-		public bool TrayIconVisible = true;
-		public bool PasteIntoActiveWindow = true;
 		public string Hotkey = "V";
+		public bool ModifierPlainWindows = true;
+		public bool ModifierPlainShift = false;
+		public bool ModifierPlainControl = false;
+		public bool ModifierPlainAlt = false;
+		public string PlainTextHotKey = "G";
+		public bool ModifierHtmlWindows = true;
+		public bool ModifierHtmlShift = false;
+		public bool ModifierHtmlControl = false;
+		public bool ModifierHtmlAlt = false;
+		public string HtmlTextHotKey = "N";
 		
 		/// <summary>
 		/// Singleton access
@@ -84,6 +95,8 @@ namespace PureTextPlus
 				ModifierControl = Convert.ToBoolean(key.GetValue("ModifierControl", false));
 				ModifierAlt = Convert.ToBoolean(key.GetValue("ModifierAlt", false));
 				Hotkey = (string) key.GetValue("Hotkey", "V");
+				PlainTextHotKey = (string)key.GetValue("PlainTextHotKey", "G");
+				HtmlTextHotKey = (string)key.GetValue("HtmlTextHotKey", "N");
 				TrayIconVisible = Convert.ToBoolean(key.GetValue("TrayIconVisible", true));
 				PasteIntoActiveWindow = Convert.ToBoolean(key.GetValue("PasteIntoActiveWindow", true));
 			}
@@ -111,6 +124,8 @@ namespace PureTextPlus
 					key.SetValue("TrayIconVisible", TrayIconVisible, RegistryValueKind.DWord);
 					key.SetValue("PasteIntoActiveWindow", PasteIntoActiveWindow, RegistryValueKind.DWord);
 					key.SetValue("Hotkey", Hotkey, RegistryValueKind.String);
+					key.SetValue("PlainTextHotKey", PlainTextHotKey, RegistryValueKind.String);
+					key.SetValue("HtmlTextHotKey", HtmlTextHotKey, RegistryValueKind.String);
 				}
 				
 				// if startup is checked must add to Run registry entry of Windows

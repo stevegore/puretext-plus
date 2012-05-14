@@ -3,6 +3,7 @@
     
     Copyright (C) 2003 Steve P. Miller, http://www.stevemiller.net/puretext/
     Copyright (C) 2011 Melloware, http://www.melloware.com
+    Copyright (C) 2012 Anderson Direct Marketing, http://www.andersondm.com
     
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -60,6 +61,8 @@ namespace PureTextPlus
 			this.lblOriginalAuthor = new System.Windows.Forms.Label();
 			this.btnClose = new System.Windows.Forms.Button();
 			this.lnkMiller = new System.Windows.Forms.LinkLabel();
+			this.lblADM = new System.Windows.Forms.LinkLabel();
+			this.lblCopyright2 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.imgIcon)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -86,7 +89,7 @@ namespace PureTextPlus
 			// 
 			this.lblDescription.Location = new System.Drawing.Point(73, 46);
 			this.lblDescription.Name = "lblDescription";
-			this.lblDescription.Size = new System.Drawing.Size(331, 51);
+			this.lblDescription.Size = new System.Drawing.Size(368, 51);
 			this.lblDescription.TabIndex = 2;
 			this.lblDescription.Text = "Description";
 			// 
@@ -95,34 +98,35 @@ namespace PureTextPlus
 			this.lblCopyright.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.lblCopyright.Location = new System.Drawing.Point(12, 97);
 			this.lblCopyright.Name = "lblCopyright";
-			this.lblCopyright.Size = new System.Drawing.Size(215, 23);
+			this.lblCopyright.Size = new System.Drawing.Size(239, 23);
 			this.lblCopyright.TabIndex = 3;
 			this.lblCopyright.Text = "Coppyright 2011 Melloware";
 			this.lblCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// lblMelloware
 			// 
-			this.lblMelloware.Location = new System.Drawing.Point(230, 97);
+			this.lblMelloware.Location = new System.Drawing.Point(257, 97);
 			this.lblMelloware.Name = "lblMelloware";
 			this.lblMelloware.Size = new System.Drawing.Size(184, 23);
 			this.lblMelloware.TabIndex = 4;
 			this.lblMelloware.TabStop = true;
 			this.lblMelloware.Text = "http://melloware.com";
 			this.lblMelloware.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.lblMelloware.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblMelloware_LinkClicked);
 			// 
 			// lblOriginalAuthor
 			// 
 			this.lblOriginalAuthor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.lblOriginalAuthor.Location = new System.Drawing.Point(12, 120);
+			this.lblOriginalAuthor.Location = new System.Drawing.Point(12, 143);
 			this.lblOriginalAuthor.Name = "lblOriginalAuthor";
-			this.lblOriginalAuthor.Size = new System.Drawing.Size(215, 23);
+			this.lblOriginalAuthor.Size = new System.Drawing.Size(239, 23);
 			this.lblOriginalAuthor.TabIndex = 5;
 			this.lblOriginalAuthor.Text = "Based on PureText by Steve P. Miller";
 			this.lblOriginalAuthor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// btnClose
 			// 
-			this.btnClose.Location = new System.Drawing.Point(165, 159);
+			this.btnClose.Location = new System.Drawing.Point(165, 181);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(75, 23);
 			this.btnClose.TabIndex = 6;
@@ -132,19 +136,43 @@ namespace PureTextPlus
 			// 
 			// lnkMiller
 			// 
-			this.lnkMiller.Location = new System.Drawing.Point(230, 120);
+			this.lnkMiller.Location = new System.Drawing.Point(257, 143);
 			this.lnkMiller.Name = "lnkMiller";
 			this.lnkMiller.Size = new System.Drawing.Size(184, 23);
 			this.lnkMiller.TabIndex = 7;
 			this.lnkMiller.TabStop = true;
 			this.lnkMiller.Text = "http://www.stevemiller.net/puretext/";
 			this.lnkMiller.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.lnkMiller.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkMiller_LinkClicked);
+			// 
+			// lblADM
+			// 
+			this.lblADM.Location = new System.Drawing.Point(257, 120);
+			this.lblADM.Name = "lblADM";
+			this.lblADM.Size = new System.Drawing.Size(184, 23);
+			this.lblADM.TabIndex = 9;
+			this.lblADM.TabStop = true;
+			this.lblADM.Text = "http://www.andersondm.com";
+			this.lblADM.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.lblADM.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblADM_LinkClicked);
+			// 
+			// lblCopyright2
+			// 
+			this.lblCopyright2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.lblCopyright2.Location = new System.Drawing.Point(12, 120);
+			this.lblCopyright2.Name = "lblCopyright2";
+			this.lblCopyright2.Size = new System.Drawing.Size(239, 23);
+			this.lblCopyright2.TabIndex = 8;
+			this.lblCopyright2.Text = "Coppyright 2012 Anderson Direct Marketing";
+			this.lblCopyright2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// FormAbout
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(416, 194);
+			this.ClientSize = new System.Drawing.Size(453, 221);
+			this.Controls.Add(this.lblADM);
+			this.Controls.Add(this.lblCopyright2);
 			this.Controls.Add(this.lnkMiller);
 			this.Controls.Add(this.btnClose);
 			this.Controls.Add(this.lblOriginalAuthor);
@@ -165,6 +193,7 @@ namespace PureTextPlus
 			this.TopMost = true;
 			((System.ComponentModel.ISupportInitialize)(this.imgIcon)).EndInit();
 			this.ResumeLayout(false);
+
 		}
 		private System.Windows.Forms.LinkLabel lnkMiller;
 		private System.Windows.Forms.LinkLabel lblMelloware;
@@ -174,5 +203,7 @@ namespace PureTextPlus
 		private System.Windows.Forms.PictureBox imgIcon;
 		private System.Windows.Forms.Label lblDescription;
 		private System.Windows.Forms.Label lblTitle;
+		private System.Windows.Forms.LinkLabel lblADM;
+		private System.Windows.Forms.Label lblCopyright2;
 	}
 }

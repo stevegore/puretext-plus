@@ -3,6 +3,7 @@
     
     Copyright (C) 2003 Steve P. Miller, http://www.stevemiller.net/puretext/
     Copyright (C) 2011 Melloware, http://www.melloware.com
+    Copyright (C) 2012 Anderson Direct Marketing, http://www.andersondm.com
     
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -43,6 +44,14 @@ namespace PureTextPlus
 			chkShift.Checked = Preferences.Instance.ModifierShift;
 			chkWin.Checked = Preferences.Instance.ModifierWindows;
 			cboLetter.SelectedItem = Preferences.Instance.Hotkey;
+			chkControlPlain.Checked = Preferences.Instance.ModifierPlainControl;
+			chkShiftPlan.Checked = Preferences.Instance.ModifierPlainShift;
+			chkWinPlain.Checked = Preferences.Instance.ModifierPlainWindows;
+			cboPlainLetter.SelectedItem = Preferences.Instance.PlainTextHotKey;
+			chkControlHtml.Checked = Preferences.Instance.ModifierHtmlControl;
+			chkShiftHtml.Checked = Preferences.Instance.ModifierHtmlShift;
+			chkWinHtml.Checked = Preferences.Instance.ModifierHtmlWindows;
+			cboHtmlLetter.SelectedItem = Preferences.Instance.HtmlTextHotKey;
 			chkPasteActiveWindow.Checked = Preferences.Instance.PasteIntoActiveWindow;
 			chkPlaySound.Checked = Preferences.Instance.PlaySound;
 			chkRunAtStartup.Checked = Preferences.Instance.Startup;
@@ -54,11 +63,19 @@ namespace PureTextPlus
 			Preferences.Instance.ModifierControl = chkControl.Checked;
 			Preferences.Instance.ModifierShift = chkShift.Checked;
 			Preferences.Instance.ModifierWindows = chkWin.Checked;
+			Preferences.Instance.ModifierPlainControl = chkControlPlain.Checked;
+			Preferences.Instance.ModifierPlainShift = chkShiftPlan.Checked;
+			Preferences.Instance.ModifierPlainWindows = chkWinPlain.Checked;
+			Preferences.Instance.ModifierHtmlControl = chkControlHtml.Checked;
+			Preferences.Instance.ModifierHtmlShift = chkShiftHtml.Checked;
+			Preferences.Instance.ModifierHtmlWindows = chkWinHtml.Checked;
 			Preferences.Instance.PasteIntoActiveWindow = chkPasteActiveWindow.Checked;
 			Preferences.Instance.PlaySound = chkPlaySound.Checked;
 			Preferences.Instance.Startup = chkRunAtStartup.Checked;
 			Preferences.Instance.TrayIconVisible = chkTrayIcon.Checked;
 			Preferences.Instance.Hotkey = (string)cboLetter.SelectedItem;
+			Preferences.Instance.PlainTextHotKey = (string)cboPlainLetter.SelectedItem;
+			Preferences.Instance.HtmlTextHotKey = (string)cboHtmlLetter.SelectedItem;
 			
 			Preferences.Instance.Save();
 			this.DialogResult = DialogResult.OK;
