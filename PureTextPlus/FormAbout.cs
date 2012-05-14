@@ -3,6 +3,7 @@
     
     Copyright (C) 2003 Steve P. Miller, http://www.stevemiller.net/puretext/
     Copyright (C) 2011 Melloware, http://www.melloware.com
+    Copyright (C) 2012 Anderson Direct Marketing, http://www.andersondm.com
     
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -49,14 +50,30 @@ namespace PureTextPlus
 				this.lblDescription.Text = ((AssemblyDescriptionAttribute)customAttributes[0]).Description;
 			}
 			customAttributes = assembly.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
+			/*
 			if ((customAttributes != null) && (customAttributes.Length > 0))
 				this.lblCopyright.Text = ((AssemblyCopyrightAttribute)customAttributes[0]).Copyright;
-			
+			*/
 		}
 		
 		void BtnCloseClick(object sender, EventArgs e)
 		{
 			this.Close();
+		}
+
+		private void lblMelloware_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			System.Diagnostics.Process.Start("http://melloware.com");
+		}
+
+		private void lblADM_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			System.Diagnostics.Process.Start("http://www.andersondm.com");
+		}
+
+		private void lnkMiller_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			System.Diagnostics.Process.Start("http://www.stevemiller.net/puretext/");
 		}
 	}
 }

@@ -3,6 +3,7 @@
     
     Copyright (C) 2003 Steve P. Miller, http://www.stevemiller.net/puretext/
     Copyright (C) 2011 Melloware, http://www.melloware.com
+    Copyright (C) 2012 Anderson Direct Marketing, http://www.andersondm.com
     
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -40,6 +41,8 @@ namespace PureTextPlus
 		private NotifyIcon notifyIcon;
 		private ContextMenu notificationMenu;
 		private static readonly HotkeyHook hotkey = new HotkeyHook();
+		private static readonly HotkeyHook plainHotKey = new HotkeyHook();
+		private static readonly HotkeyHook htmlHotKey = new HotkeyHook();
 		
 		#region Initialize icon and menu
 		public NotificationIcon()
@@ -54,6 +57,8 @@ namespace PureTextPlus
 			
 			// register the event that is fired after the key press.
 			hotkey.KeyPressed += new EventHandler<KeyPressedEventArgs>(Hotkey_KeyPressed);
+			plainHotKey.KeyPressed +=new EventHandler<KeyPressedEventArgs>(PlainHotKey_KeyPressed);
+			htmlHotKey.KeyPressed +=new EventHandler<KeyPressedEventArgs>(HtmlHotKey_KeyPressed);
 			ConfigureApplication();
 		}
 		
@@ -100,9 +105,13 @@ namespace PureTextPlus
 				// get the new hotkey
 				KeysConverter keysConverter = new KeysConverter();
 				Keys keys = (Keys)keysConverter.ConvertFromString(Preferences.Instance.Hotkey);
+				Keys plainKey = (Keys)keysConverter.ConvertFromString(Preferences.Instance.PlainTextHotKey);
+				Keys htmlKey = (Keys)keysConverter.ConvertFromString(Preferences.Instance.HtmlTextHotKey);
 				
 				// register the control combination as hot key.
 				hotkey.RegisterHotKey(modifier, keys);
+				plainHotKey.RegisterHotKey(modifier, plainKey);
+				htmlHotKey.RegisterHotKey(modifier, htmlKey);
 				
 				// set the visibility of the icon
 				this.notifyIcon.Visible = Preferences.Instance.TrayIconVisible;
@@ -122,8 +131,10 @@ namespace PureTextPlus
 			
 			bool isFirstInstance;
 			// Please use a unique name for the mutex to prevent conflicts with other programs
-			using (Mutex mtx = new Mutex(true, Preferences.APPLICATION_TITLE, out isFirstInstance)) {
-				if (isFirstInstance) {
+			using (Mutex mtx = new Mutex(true, Preferences.APPLICATION_TITLE, out isFirstInstance))
+			{
+				if (isFirstInstance) 
+				{
 					NotificationIcon notificationIcon = new NotificationIcon();
 					notificationIcon.notifyIcon.Visible = true;
 					
@@ -133,7 +144,9 @@ namespace PureTextPlus
 
 					Application.Run();
 					notificationIcon.notifyIcon.Dispose();
-				} else {
+				} 
+				else 
+				{
 					// The application is already running
 				}
 			} // releases the Mutex
@@ -197,6 +210,60 @@ namespace PureTextPlus
 
 			// play a sound if the user wa nts to on every paste
 			if (Preferences.Instance.PlaySound) {
+				SystemSounds.Asterisk.Play();
+			}
+		}
+
+		void PlainHotKey_KeyPressed(object sender, KeyPressedEventArgs e)
+		{
+			CleanText cleanText = new CleanText();
+
+			// get the text and exit if no text on clipboard
+			string plainText = Clipboard.GetText();
+			if (String.Empty.Equals(plainText))
+			{
+				return;
+			}
+
+			// put plain text on the clipboard
+			Clipboard.SetText(cleanText.ToPlain(plainText));
+
+			if (Preferences.Instance.PasteIntoActiveWindow)
+			{
+				// send CTRL+V for Paste to the active window or control
+				InputSimulator.SimulateModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_V);
+			}
+
+			// play a sound if the user wa nts to on every paste
+			if (Preferences.Instance.PlaySound)
+			{
+				SystemSounds.Asterisk.Play();
+			}
+		}
+
+		void HtmlHotKey_KeyPressed(object sender, KeyPressedEventArgs e)
+		{
+			CleanText cleanText = new CleanText();
+
+			// get the text and exit if no text on clipboard
+			string htmlText = Clipboard.GetText();
+			if (String.Empty.Equals(htmlText))
+			{
+				return;
+			}
+
+			// put plain text on the clipboard
+			Clipboard.SetText(cleanText.ToHtml(htmlText));
+
+			if (Preferences.Instance.PasteIntoActiveWindow)
+			{
+				// send CTRL+V for Paste to the active window or control
+				InputSimulator.SimulateModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_V);
+			}
+
+			// play a sound if the user wa nts to on every paste
+			if (Preferences.Instance.PlaySound)
+			{
 				SystemSounds.Asterisk.Play();
 			}
 		}

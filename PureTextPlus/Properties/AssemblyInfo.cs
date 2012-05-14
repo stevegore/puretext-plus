@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("PureTextPlus")]
 [assembly: AssemblyDescription("PureTextPlus adds a new Windows hot-key (default is WINDOWS+V) that allows you to paste text to any application without RTF or HTML formatting.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Melloware Inc http://www.melloware.com")]
+[assembly: AssemblyCompany("Melloware Inc http://www.melloware.com, Anderson Direct Marketing http://www.andersondm.com")]
 [assembly: AssemblyProduct("PureTextPlus")]
-[assembly: AssemblyCopyright("Copyright 2011 Melloware Inc")]
+[assembly: AssemblyCopyright("Copyright 2011 Melloware Inc, Copyright 2012 Anderson Direct Marketing")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -28,4 +28,4 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can use the default the Revision and 
 // Build Numbers by using the '*' as shown below:
-[assembly: AssemblyVersion("3.0.0.0")]
+[assembly: AssemblyVersion("4.0.0.0")]

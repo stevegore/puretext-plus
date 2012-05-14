@@ -3,6 +3,7 @@
     
     Copyright (C) 2003 Steve P. Miller, http://www.stevemiller.net/puretext/
     Copyright (C) 2011 Melloware, http://www.melloware.com
+    Copyright (C) 2012 Anderson Direct Marketing, http://www.andersondm.com
     
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -53,21 +54,33 @@ namespace PureTextPlus
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOptions));
 			this.gbHotkey = new System.Windows.Forms.GroupBox();
-			this.chkControl = new System.Windows.Forms.CheckBox();
-			this.chkShift = new System.Windows.Forms.CheckBox();
-			this.chkWin = new System.Windows.Forms.CheckBox();
 			this.cboLetter = new System.Windows.Forms.ComboBox();
+			this.chkWin = new System.Windows.Forms.CheckBox();
+			this.chkShift = new System.Windows.Forms.CheckBox();
+			this.chkControl = new System.Windows.Forms.CheckBox();
 			this.btnOK = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.gbActions = new System.Windows.Forms.GroupBox();
-			this.chkPasteActiveWindow = new System.Windows.Forms.CheckBox();
 			this.chkPlaySound = new System.Windows.Forms.CheckBox();
+			this.chkPasteActiveWindow = new System.Windows.Forms.CheckBox();
 			this.gbGlobal = new System.Windows.Forms.GroupBox();
-			this.chkRunAtStartup = new System.Windows.Forms.CheckBox();
 			this.chkTrayIcon = new System.Windows.Forms.CheckBox();
+			this.chkRunAtStartup = new System.Windows.Forms.CheckBox();
+			this.gbPlainKey = new System.Windows.Forms.GroupBox();
+			this.cboPlainLetter = new System.Windows.Forms.ComboBox();
+			this.chkWinPlain = new System.Windows.Forms.CheckBox();
+			this.chkShiftPlan = new System.Windows.Forms.CheckBox();
+			this.chkControlPlain = new System.Windows.Forms.CheckBox();
+			this.gbHtmlKey = new System.Windows.Forms.GroupBox();
+			this.cboHtmlLetter = new System.Windows.Forms.ComboBox();
+			this.chkWinHtml = new System.Windows.Forms.CheckBox();
+			this.chkShiftHtml = new System.Windows.Forms.CheckBox();
+			this.chkControlHtml = new System.Windows.Forms.CheckBox();
 			this.gbHotkey.SuspendLayout();
 			this.gbActions.SuspendLayout();
 			this.gbGlobal.SuspendLayout();
+			this.gbPlainKey.SuspendLayout();
+			this.gbHtmlKey.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// gbHotkey
@@ -78,10 +91,82 @@ namespace PureTextPlus
 			this.gbHotkey.Controls.Add(this.chkControl);
 			this.gbHotkey.Location = new System.Drawing.Point(12, 12);
 			this.gbHotkey.Name = "gbHotkey";
-			this.gbHotkey.Size = new System.Drawing.Size(319, 116);
+			this.gbHotkey.Size = new System.Drawing.Size(319, 89);
 			this.gbHotkey.TabIndex = 0;
 			this.gbHotkey.TabStop = false;
 			this.gbHotkey.Text = "Hotkey to convert the clipboard to pure text";
+			// 
+			// cboLetter
+			// 
+			this.cboLetter.FormattingEnabled = true;
+			this.cboLetter.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "V",
+            "X",
+            "Y",
+            "Z",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "-",
+            "=",
+            "[",
+            "]",
+            ";",
+            "\'",
+            ",",
+            ".",
+            "/",
+            "`"});
+			this.cboLetter.Location = new System.Drawing.Point(6, 22);
+			this.cboLetter.Name = "cboLetter";
+			this.cboLetter.Size = new System.Drawing.Size(198, 21);
+			this.cboLetter.TabIndex = 3;
+			// 
+			// chkWin
+			// 
+			this.chkWin.Location = new System.Drawing.Point(219, 58);
+			this.chkWin.Name = "chkWin";
+			this.chkWin.Size = new System.Drawing.Size(84, 24);
+			this.chkWin.TabIndex = 2;
+			this.chkWin.Text = "Windows";
+			this.chkWin.UseVisualStyleBackColor = true;
+			// 
+			// chkShift
+			// 
+			this.chkShift.Location = new System.Drawing.Point(219, 39);
+			this.chkShift.Name = "chkShift";
+			this.chkShift.Size = new System.Drawing.Size(84, 24);
+			this.chkShift.TabIndex = 1;
+			this.chkShift.Text = "Shift";
+			this.chkShift.UseVisualStyleBackColor = true;
 			// 
 			// chkControl
 			// 
@@ -91,78 +176,6 @@ namespace PureTextPlus
 			this.chkControl.TabIndex = 0;
 			this.chkControl.Text = "Control";
 			this.chkControl.UseVisualStyleBackColor = true;
-			// 
-			// chkShift
-			// 
-			this.chkShift.Location = new System.Drawing.Point(219, 50);
-			this.chkShift.Name = "chkShift";
-			this.chkShift.Size = new System.Drawing.Size(84, 24);
-			this.chkShift.TabIndex = 1;
-			this.chkShift.Text = "Shift";
-			this.chkShift.UseVisualStyleBackColor = true;
-			// 
-			// chkWin
-			// 
-			this.chkWin.Location = new System.Drawing.Point(219, 80);
-			this.chkWin.Name = "chkWin";
-			this.chkWin.Size = new System.Drawing.Size(84, 24);
-			this.chkWin.TabIndex = 2;
-			this.chkWin.Text = "Windows";
-			this.chkWin.UseVisualStyleBackColor = true;
-			// 
-			// cboLetter
-			// 
-			this.cboLetter.FormattingEnabled = true;
-			this.cboLetter.Items.AddRange(new object[] {
-									"A",
-									"B",
-									"C",
-									"D",
-									"E",
-									"F",
-									"G",
-									"H",
-									"I",
-									"J",
-									"K",
-									"L",
-									"M",
-									"N",
-									"O",
-									"P",
-									"Q",
-									"R",
-									"S",
-									"T",
-									"U",
-									"V",
-									"X",
-									"Y",
-									"Z",
-									"0",
-									"1",
-									"2",
-									"3",
-									"4",
-									"5",
-									"6",
-									"7",
-									"8",
-									"9",
-									"-",
-									"=",
-									"[",
-									"]",
-									";",
-									"\'",
-									",",
-									".",
-									"/",
-									"`"});
-			this.cboLetter.Location = new System.Drawing.Point(6, 22);
-			this.cboLetter.Name = "cboLetter";
-			this.cboLetter.Size = new System.Drawing.Size(198, 21);
-			this.cboLetter.TabIndex = 3;
 			// 
 			// btnOK
 			// 
@@ -188,21 +201,12 @@ namespace PureTextPlus
 			// 
 			this.gbActions.Controls.Add(this.chkPlaySound);
 			this.gbActions.Controls.Add(this.chkPasteActiveWindow);
-			this.gbActions.Location = new System.Drawing.Point(12, 134);
+			this.gbActions.Location = new System.Drawing.Point(12, 285);
 			this.gbActions.Name = "gbActions";
 			this.gbActions.Size = new System.Drawing.Size(319, 84);
 			this.gbActions.TabIndex = 3;
 			this.gbActions.TabStop = false;
 			this.gbActions.Text = "Perform actions on Hotkey pressed";
-			// 
-			// chkPasteActiveWindow
-			// 
-			this.chkPasteActiveWindow.Location = new System.Drawing.Point(7, 20);
-			this.chkPasteActiveWindow.Name = "chkPasteActiveWindow";
-			this.chkPasteActiveWindow.Size = new System.Drawing.Size(296, 24);
-			this.chkPasteActiveWindow.TabIndex = 0;
-			this.chkPasteActiveWindow.Text = "Paste converted text into active window";
-			this.chkPasteActiveWindow.UseVisualStyleBackColor = true;
 			// 
 			// chkPlaySound
 			// 
@@ -213,25 +217,25 @@ namespace PureTextPlus
 			this.chkPlaySound.Text = "Play a sound";
 			this.chkPlaySound.UseVisualStyleBackColor = true;
 			// 
+			// chkPasteActiveWindow
+			// 
+			this.chkPasteActiveWindow.Location = new System.Drawing.Point(7, 20);
+			this.chkPasteActiveWindow.Name = "chkPasteActiveWindow";
+			this.chkPasteActiveWindow.Size = new System.Drawing.Size(296, 24);
+			this.chkPasteActiveWindow.TabIndex = 0;
+			this.chkPasteActiveWindow.Text = "Paste converted text into active window";
+			this.chkPasteActiveWindow.UseVisualStyleBackColor = true;
+			// 
 			// gbGlobal
 			// 
 			this.gbGlobal.Controls.Add(this.chkTrayIcon);
 			this.gbGlobal.Controls.Add(this.chkRunAtStartup);
-			this.gbGlobal.Location = new System.Drawing.Point(12, 224);
+			this.gbGlobal.Location = new System.Drawing.Point(12, 374);
 			this.gbGlobal.Name = "gbGlobal";
 			this.gbGlobal.Size = new System.Drawing.Size(319, 80);
 			this.gbGlobal.TabIndex = 4;
 			this.gbGlobal.TabStop = false;
 			this.gbGlobal.Text = "Global Options";
-			// 
-			// chkRunAtStartup
-			// 
-			this.chkRunAtStartup.Location = new System.Drawing.Point(7, 20);
-			this.chkRunAtStartup.Name = "chkRunAtStartup";
-			this.chkRunAtStartup.Size = new System.Drawing.Size(306, 24);
-			this.chkRunAtStartup.TabIndex = 0;
-			this.chkRunAtStartup.Text = "Automatically run at Windows startup";
-			this.chkRunAtStartup.UseVisualStyleBackColor = true;
 			// 
 			// chkTrayIcon
 			// 
@@ -242,11 +246,210 @@ namespace PureTextPlus
 			this.chkTrayIcon.Text = "Show Tray Icon (WARNING registry edit req to enable)";
 			this.chkTrayIcon.UseVisualStyleBackColor = true;
 			// 
+			// chkRunAtStartup
+			// 
+			this.chkRunAtStartup.Location = new System.Drawing.Point(7, 20);
+			this.chkRunAtStartup.Name = "chkRunAtStartup";
+			this.chkRunAtStartup.Size = new System.Drawing.Size(306, 24);
+			this.chkRunAtStartup.TabIndex = 0;
+			this.chkRunAtStartup.Text = "Automatically run at Windows startup";
+			this.chkRunAtStartup.UseVisualStyleBackColor = true;
+			// 
+			// gbPlainKey
+			// 
+			this.gbPlainKey.Controls.Add(this.cboPlainLetter);
+			this.gbPlainKey.Controls.Add(this.chkWinPlain);
+			this.gbPlainKey.Controls.Add(this.chkShiftPlan);
+			this.gbPlainKey.Controls.Add(this.chkControlPlain);
+			this.gbPlainKey.Location = new System.Drawing.Point(12, 104);
+			this.gbPlainKey.Name = "gbPlainKey";
+			this.gbPlainKey.Size = new System.Drawing.Size(319, 87);
+			this.gbPlainKey.TabIndex = 4;
+			this.gbPlainKey.TabStop = false;
+			this.gbPlainKey.Text = "Hotkey to convert the clipboard to plain text";
+			// 
+			// cboPlainLetter
+			// 
+			this.cboPlainLetter.FormattingEnabled = true;
+			this.cboPlainLetter.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "V",
+            "X",
+            "Y",
+            "Z",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "-",
+            "=",
+            "[",
+            "]",
+            ";",
+            "\'",
+            ",",
+            ".",
+            "/",
+            "`"});
+			this.cboPlainLetter.Location = new System.Drawing.Point(6, 22);
+			this.cboPlainLetter.Name = "cboPlainLetter";
+			this.cboPlainLetter.Size = new System.Drawing.Size(198, 21);
+			this.cboPlainLetter.TabIndex = 3;
+			// 
+			// chkWinPlain
+			// 
+			this.chkWinPlain.Location = new System.Drawing.Point(219, 58);
+			this.chkWinPlain.Name = "chkWinPlain";
+			this.chkWinPlain.Size = new System.Drawing.Size(84, 24);
+			this.chkWinPlain.TabIndex = 2;
+			this.chkWinPlain.Text = "Windows";
+			this.chkWinPlain.UseVisualStyleBackColor = true;
+			// 
+			// chkShiftPlan
+			// 
+			this.chkShiftPlan.Location = new System.Drawing.Point(219, 39);
+			this.chkShiftPlan.Name = "chkShiftPlan";
+			this.chkShiftPlan.Size = new System.Drawing.Size(84, 24);
+			this.chkShiftPlan.TabIndex = 1;
+			this.chkShiftPlan.Text = "Shift";
+			this.chkShiftPlan.UseVisualStyleBackColor = true;
+			// 
+			// chkControlPlain
+			// 
+			this.chkControlPlain.Location = new System.Drawing.Point(219, 20);
+			this.chkControlPlain.Name = "chkControlPlain";
+			this.chkControlPlain.Size = new System.Drawing.Size(84, 24);
+			this.chkControlPlain.TabIndex = 0;
+			this.chkControlPlain.Text = "Control";
+			this.chkControlPlain.UseVisualStyleBackColor = true;
+			// 
+			// gbHtmlKey
+			// 
+			this.gbHtmlKey.Controls.Add(this.cboHtmlLetter);
+			this.gbHtmlKey.Controls.Add(this.chkWinHtml);
+			this.gbHtmlKey.Controls.Add(this.chkShiftHtml);
+			this.gbHtmlKey.Controls.Add(this.chkControlHtml);
+			this.gbHtmlKey.Location = new System.Drawing.Point(12, 194);
+			this.gbHtmlKey.Name = "gbHtmlKey";
+			this.gbHtmlKey.Size = new System.Drawing.Size(319, 88);
+			this.gbHtmlKey.TabIndex = 5;
+			this.gbHtmlKey.TabStop = false;
+			this.gbHtmlKey.Text = "Hotkey to convert the clipboard to HTML text";
+			// 
+			// cboHtmlLetter
+			// 
+			this.cboHtmlLetter.FormattingEnabled = true;
+			this.cboHtmlLetter.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "V",
+            "X",
+            "Y",
+            "Z",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "-",
+            "=",
+            "[",
+            "]",
+            ";",
+            "\'",
+            ",",
+            ".",
+            "/",
+            "`"});
+			this.cboHtmlLetter.Location = new System.Drawing.Point(6, 22);
+			this.cboHtmlLetter.Name = "cboHtmlLetter";
+			this.cboHtmlLetter.Size = new System.Drawing.Size(198, 21);
+			this.cboHtmlLetter.TabIndex = 3;
+			// 
+			// chkWinHtml
+			// 
+			this.chkWinHtml.Location = new System.Drawing.Point(219, 58);
+			this.chkWinHtml.Name = "chkWinHtml";
+			this.chkWinHtml.Size = new System.Drawing.Size(84, 24);
+			this.chkWinHtml.TabIndex = 2;
+			this.chkWinHtml.Text = "Windows";
+			this.chkWinHtml.UseVisualStyleBackColor = true;
+			// 
+			// chkShiftHtml
+			// 
+			this.chkShiftHtml.Location = new System.Drawing.Point(219, 39);
+			this.chkShiftHtml.Name = "chkShiftHtml";
+			this.chkShiftHtml.Size = new System.Drawing.Size(84, 24);
+			this.chkShiftHtml.TabIndex = 1;
+			this.chkShiftHtml.Text = "Shift";
+			this.chkShiftHtml.UseVisualStyleBackColor = true;
+			// 
+			// chkControlHtml
+			// 
+			this.chkControlHtml.Location = new System.Drawing.Point(219, 20);
+			this.chkControlHtml.Name = "chkControlHtml";
+			this.chkControlHtml.Size = new System.Drawing.Size(84, 24);
+			this.chkControlHtml.TabIndex = 0;
+			this.chkControlHtml.Text = "Control";
+			this.chkControlHtml.UseVisualStyleBackColor = true;
+			// 
 			// FormOptions
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(414, 313);
+			this.ClientSize = new System.Drawing.Size(414, 468);
+			this.Controls.Add(this.gbHtmlKey);
+			this.Controls.Add(this.gbPlainKey);
 			this.Controls.Add(this.gbGlobal);
 			this.Controls.Add(this.gbActions);
 			this.Controls.Add(this.btnCancel);
@@ -263,7 +466,10 @@ namespace PureTextPlus
 			this.gbHotkey.ResumeLayout(false);
 			this.gbActions.ResumeLayout(false);
 			this.gbGlobal.ResumeLayout(false);
+			this.gbPlainKey.ResumeLayout(false);
+			this.gbHtmlKey.ResumeLayout(false);
 			this.ResumeLayout(false);
+
 		}
 		private System.Windows.Forms.CheckBox chkRunAtStartup;
 		private System.Windows.Forms.CheckBox chkTrayIcon;
@@ -278,5 +484,15 @@ namespace PureTextPlus
 		private System.Windows.Forms.CheckBox chkShift;
 		private System.Windows.Forms.CheckBox chkWin;
 		private System.Windows.Forms.GroupBox gbHotkey;
+		private System.Windows.Forms.GroupBox gbPlainKey;
+		private System.Windows.Forms.ComboBox cboPlainLetter;
+		private System.Windows.Forms.CheckBox chkWinPlain;
+		private System.Windows.Forms.CheckBox chkShiftPlan;
+		private System.Windows.Forms.CheckBox chkControlPlain;
+		private System.Windows.Forms.GroupBox gbHtmlKey;
+		private System.Windows.Forms.ComboBox cboHtmlLetter;
+		private System.Windows.Forms.CheckBox chkWinHtml;
+		private System.Windows.Forms.CheckBox chkShiftHtml;
+		private System.Windows.Forms.CheckBox chkControlHtml;
 	}
 }
