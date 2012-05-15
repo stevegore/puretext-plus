@@ -7,7 +7,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>PureTextPlus</RootNamespace>
     <AssemblyName>PureTextPlus</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <AppDesignerFolder>Properties</AppDesignerFolder>
