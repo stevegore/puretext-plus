@@ -1,6 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+# SharpDevelop 4.0.0.7070
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PureTextPlus", "PureTextPlus\PureTextPlus.csproj", "{2B69097F-4BCE-4F4F-8F47-30EBED82BC24}"
 EndProject
 Global
