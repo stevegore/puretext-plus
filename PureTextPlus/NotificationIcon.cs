@@ -85,18 +85,46 @@ namespace PureTextPlus
 		/// </summary>
 		private void ConfigureApplication() {
 			try {
-				ModifierKeys modifier = ModifierKeys.None;
-				if (Preferences.Instance.ModifierAlt) {
-					modifier = modifier | ModifierKeys.Alt;
+				ModifierKeys modifierPure = ModifierKeys.None;
+				if (Preferences.Instance.ModifierPureAlt) {
+					modifierPure = modifierPure | ModifierKeys.Alt;
 				}
-				if (Preferences.Instance.ModifierControl) {
-					modifier = modifier | ModifierKeys.Control;
+				if (Preferences.Instance.ModifierPureControl) {
+					modifierPure = modifierPure | ModifierKeys.Control;
 				}
-				if (Preferences.Instance.ModifierShift) {
-					modifier = modifier | ModifierKeys.Shift;
+				if (Preferences.Instance.ModifierPureShift) {
+					modifierPure = modifierPure | ModifierKeys.Shift;
 				}
-				if (Preferences.Instance.ModifierWindows) {
-					modifier = modifier | ModifierKeys.Win;
+				if (Preferences.Instance.ModifierPureWindows) {
+					modifierPure = modifierPure | ModifierKeys.Win;
+				}
+				
+				ModifierKeys modifierPlain = ModifierKeys.None;
+				if (Preferences.Instance.ModifierPlainAlt) {
+					modifierPlain = modifierPlain | ModifierKeys.Alt;
+				}
+				if (Preferences.Instance.ModifierPlainControl) {
+					modifierPlain = modifierPlain | ModifierKeys.Control;
+				}
+				if (Preferences.Instance.ModifierPlainShift) {
+					modifierPlain = modifierPlain | ModifierKeys.Shift;
+				}
+				if (Preferences.Instance.ModifierPlainWindows) {
+					modifierPlain = modifierPlain | ModifierKeys.Win;
+				}
+				
+				ModifierKeys modifierHtml = ModifierKeys.None;
+				if (Preferences.Instance.ModifierHtmlAlt) {
+					modifierHtml = modifierHtml | ModifierKeys.Alt;
+				}
+				if (Preferences.Instance.ModifierHtmlControl) {
+					modifierHtml = modifierHtml | ModifierKeys.Control;
+				}
+				if (Preferences.Instance.ModifierHtmlShift) {
+					modifierHtml = modifierHtml | ModifierKeys.Shift;
+				}
+				if (Preferences.Instance.ModifierHtmlWindows) {
+					modifierHtml = modifierHtml | ModifierKeys.Win;
 				}
 				
 				// remove current hotkeys
@@ -109,9 +137,9 @@ namespace PureTextPlus
 				Keys htmlKey = (Keys)keysConverter.ConvertFromString(Preferences.Instance.HtmlTextHotKey);
 				
 				// register the control combination as hot key.
-				hotkey.RegisterHotKey(modifier, keys);
-				plainHotKey.RegisterHotKey(modifier, plainKey);
-				htmlHotKey.RegisterHotKey(modifier, htmlKey);
+				hotkey.RegisterHotKey(modifierPure, keys);
+				plainHotKey.RegisterHotKey(modifierPlain, plainKey);
+				htmlHotKey.RegisterHotKey(modifierHtml, htmlKey);
 				
 				// set the visibility of the icon
 				this.notifyIcon.Visible = Preferences.Instance.TrayIconVisible;
