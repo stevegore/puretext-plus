@@ -136,7 +136,6 @@ namespace PureTextPlus
 				if (isFirstInstance) 
 				{
 					NotificationIcon notificationIcon = new NotificationIcon();
-					notificationIcon.notifyIcon.Visible = true;
 					
 					Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
 					AssemblyName asmName = assembly.GetName();
@@ -208,7 +207,7 @@ namespace PureTextPlus
 				InputSimulator.SimulateModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_V);
 			}
 
-			// play a sound if the user wa nts to on every paste
+			// play a sound if the user wants to on every paste
 			if (Preferences.Instance.PlaySound) {
 				SystemSounds.Asterisk.Play();
 			}
