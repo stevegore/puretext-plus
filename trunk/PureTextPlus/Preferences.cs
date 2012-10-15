@@ -52,10 +52,10 @@ namespace PureTextPlus
 		public bool Startup = false;
 		public bool TrayIconVisible = true;
 		public bool PasteIntoActiveWindow = true;
-		public bool ModifierWindows = true;
-		public bool ModifierShift = false;
-		public bool ModifierControl = false;
-		public bool ModifierAlt = false;
+		public bool ModifierPureWindows = true;
+		public bool ModifierPureShift = false;
+		public bool ModifierPureControl = false;
+		public bool ModifierPureAlt = false;
 		public string Hotkey = "V";
 		public bool ModifierPlainWindows = true;
 		public bool ModifierPlainShift = false;
@@ -90,10 +90,18 @@ namespace PureTextPlus
 			using (key)
 			{
 				PlaySound = Convert.ToBoolean(key.GetValue("PlaySound", false));
-				ModifierWindows = Convert.ToBoolean(key.GetValue("ModifierWindows", true));
-				ModifierShift = Convert.ToBoolean(key.GetValue("ModifierShift", false));
-				ModifierControl = Convert.ToBoolean(key.GetValue("ModifierControl", false));
-				ModifierAlt = Convert.ToBoolean(key.GetValue("ModifierAlt", false));
+				ModifierPureWindows = Convert.ToBoolean(key.GetValue("ModifierPureWindows", true));
+				ModifierPureShift = Convert.ToBoolean(key.GetValue("ModifierPureShift", false));
+				ModifierPureControl = Convert.ToBoolean(key.GetValue("ModifierPureControl", false));
+				ModifierPureAlt = Convert.ToBoolean(key.GetValue("ModifierPureAlt", false));
+				ModifierPlainWindows = Convert.ToBoolean(key.GetValue("ModifierPlainWindows", true));
+				ModifierPlainShift = Convert.ToBoolean(key.GetValue("ModifierPlainShift", false));
+				ModifierPlainControl = Convert.ToBoolean(key.GetValue("ModifierPlainControl", false));
+				ModifierPlainAlt = Convert.ToBoolean(key.GetValue("ModifierPlainAlt", false));
+				ModifierHtmlWindows = Convert.ToBoolean(key.GetValue("ModifierHtmlWindows", true));
+				ModifierHtmlShift = Convert.ToBoolean(key.GetValue("ModifierHtmlShift", false));
+				ModifierHtmlControl = Convert.ToBoolean(key.GetValue("ModifierHtmlControl", false));
+				ModifierHtmlAlt = Convert.ToBoolean(key.GetValue("ModifierHtmlAlt", false));
 				Hotkey = (string) key.GetValue("Hotkey", "V");
 				PlainTextHotKey = (string)key.GetValue("PlainTextHotKey", "G");
 				HtmlTextHotKey = (string)key.GetValue("HtmlTextHotKey", "N");
@@ -117,10 +125,18 @@ namespace PureTextPlus
 				using (key)
 				{
 					key.SetValue("PlaySound", PlaySound, RegistryValueKind.DWord);
-					key.SetValue("ModifierWindows", ModifierWindows, RegistryValueKind.DWord);
-					key.SetValue("ModifierShift", ModifierShift, RegistryValueKind.DWord);
-					key.SetValue("ModifierControl", ModifierControl, RegistryValueKind.DWord);
-					key.SetValue("ModifierAlt", ModifierAlt, RegistryValueKind.DWord);
+					key.SetValue("ModifierPureWindows", ModifierPureWindows, RegistryValueKind.DWord);
+					key.SetValue("ModifierPureShift", ModifierPureShift, RegistryValueKind.DWord);
+					key.SetValue("ModifierPureControl", ModifierPureControl, RegistryValueKind.DWord);
+					key.SetValue("ModifierPureAlt", ModifierPureAlt, RegistryValueKind.DWord);
+					key.SetValue("ModifierPlainWindows", ModifierPlainWindows, RegistryValueKind.DWord);
+					key.SetValue("ModifierPlainShift", ModifierPlainShift, RegistryValueKind.DWord);
+					key.SetValue("ModifierPlainControl", ModifierPlainControl, RegistryValueKind.DWord);
+					key.SetValue("ModifierPlainAlt", ModifierPlainAlt, RegistryValueKind.DWord);
+					key.SetValue("ModifierHtmlWindows", ModifierHtmlWindows, RegistryValueKind.DWord);
+					key.SetValue("ModifierHtmlShift", ModifierHtmlShift, RegistryValueKind.DWord);
+					key.SetValue("ModifierHtmlControl", ModifierHtmlControl, RegistryValueKind.DWord);
+					key.SetValue("ModifierHtmlAlt", ModifierHtmlAlt, RegistryValueKind.DWord);
 					key.SetValue("TrayIconVisible", TrayIconVisible, RegistryValueKind.DWord);
 					key.SetValue("PasteIntoActiveWindow", PasteIntoActiveWindow, RegistryValueKind.DWord);
 					key.SetValue("Hotkey", Hotkey, RegistryValueKind.String);

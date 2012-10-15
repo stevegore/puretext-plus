@@ -40,9 +40,9 @@ namespace PureTextPlus
 			//
 			InitializeComponent();
 			
-			chkControl.Checked = Preferences.Instance.ModifierControl;
-			chkShift.Checked = Preferences.Instance.ModifierShift;
-			chkWin.Checked = Preferences.Instance.ModifierWindows;
+			chkControl.Checked = Preferences.Instance.ModifierPureControl;
+			chkShift.Checked = Preferences.Instance.ModifierPureShift;
+			chkWin.Checked = Preferences.Instance.ModifierPureWindows;
 			cboLetter.SelectedItem = Preferences.Instance.Hotkey;
 			chkControlPlain.Checked = Preferences.Instance.ModifierPlainControl;
 			chkShiftPlan.Checked = Preferences.Instance.ModifierPlainShift;
@@ -60,9 +60,9 @@ namespace PureTextPlus
 		
 		void BtnOKClick(object sender, EventArgs e)
 		{
-			Preferences.Instance.ModifierControl = chkControl.Checked;
-			Preferences.Instance.ModifierShift = chkShift.Checked;
-			Preferences.Instance.ModifierWindows = chkWin.Checked;
+			Preferences.Instance.ModifierPureControl = chkControl.Checked;
+			Preferences.Instance.ModifierPureShift = chkShift.Checked;
+			Preferences.Instance.ModifierPureWindows = chkWin.Checked;
 			Preferences.Instance.ModifierPlainControl = chkControlPlain.Checked;
 			Preferences.Instance.ModifierPlainShift = chkShiftPlan.Checked;
 			Preferences.Instance.ModifierPlainWindows = chkWinPlain.Checked;
