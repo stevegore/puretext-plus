@@ -48,6 +48,7 @@ namespace PureTextPlus
 		public NotificationIcon()
 		{
 			notifyIcon = new NotifyIcon();
+			this.notifyIcon.Visible = false;
 			notificationMenu = new ContextMenu(InitializeMenu());
 			
 			notifyIcon.DoubleClick += IconDoubleClick;
@@ -141,11 +142,12 @@ namespace PureTextPlus
 				plainHotKey.RegisterHotKey(modifierPlain, plainKey);
 				htmlHotKey.RegisterHotKey(modifierHtml, htmlKey);
 				
-				// set the visibility of the icon
-				this.notifyIcon.Visible = Preferences.Instance.TrayIconVisible;
 			} catch (Exception) {
 				// could not register hotkey!
 			}
+			
+			// set the visibility of the icon
+		    this.notifyIcon.Visible = Preferences.Instance.TrayIconVisible;
 		}
 		#endregion
 		
