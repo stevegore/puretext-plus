@@ -142,8 +142,10 @@ namespace PureTextPlus
 				plainHotKey.RegisterHotKey(modifierPlain, plainKey);
 				htmlHotKey.RegisterHotKey(modifierHtml, htmlKey);
 				
-			} catch (Exception) {
+			} catch (Exception ex) {
 				// could not register hotkey!
+				MessageBox.Show("Whoops! Could not register hotkey:\n\n" + ex.Message + ex.StackTrace,
+				                "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
 			}
 			
 			// set the visibility of the icon
@@ -171,6 +173,7 @@ namespace PureTextPlus
 					AssemblyName asmName = assembly.GetName();
 					notificationIcon.notifyIcon.Text  = String.Format("{0} {1}", Preferences.APPLICATION_TITLE, asmName.Version );
 
+					AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 					Application.Run();
 					notificationIcon.notifyIcon.Dispose();
 				} 
@@ -179,6 +182,22 @@ namespace PureTextPlus
 					// The application is already running
 				}
 			} // releases the Mutex
+		}
+		
+		static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+		{
+			try
+			{
+				Exception ex = (Exception)e.ExceptionObject;
+
+				MessageBox.Show("Whoops! Please contact the developers with the following"
+				                + " information:\n\n" + ex.Message + ex.StackTrace,
+				                "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+			}
+			finally
+			{
+				Application.Exit();
+			}
 		}
 		#endregion
 		
