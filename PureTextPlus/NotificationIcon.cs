@@ -21,7 +21,7 @@
     
     NO code was taken from the original project this was rewritten from scratch
     from just the idea of Puretext.
-*/
+ */
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -85,7 +85,9 @@ namespace PureTextPlus
 		/// Configures the Hotkey based on preferences.
 		/// </summary>
 		private void ConfigureApplication() {
+			
 			try {
+				hotkey.UnregisterHotKeys();
 				ModifierKeys modifierPure = ModifierKeys.None;
 				if (Preferences.Instance.ModifierPureAlt) {
 					modifierPure = modifierPure | ModifierKeys.Alt;
@@ -100,6 +102,19 @@ namespace PureTextPlus
 					modifierPure = modifierPure | ModifierKeys.Win;
 				}
 				
+				// get the new hotkey
+				KeysConverter keysConverter = new KeysConverter();
+				Keys keys = (Keys)keysConverter.ConvertFromString(Preferences.Instance.Hotkey);
+				
+				// register the control combination as hot key.
+				hotkey.RegisterHotKey(modifierPure, keys);
+			} catch (Exception ex) {
+				// could not register hotkey!
+				MessageBox.Show("Whoops! Could not register hotkey:\n\n" + ex.Message + ex.StackTrace,
+				                "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+			}
+			try {
+				plainHotKey.UnregisterHotKeys();
 				ModifierKeys modifierPlain = ModifierKeys.None;
 				if (Preferences.Instance.ModifierPlainAlt) {
 					modifierPlain = modifierPlain | ModifierKeys.Alt;
@@ -113,7 +128,20 @@ namespace PureTextPlus
 				if (Preferences.Instance.ModifierPlainWindows) {
 					modifierPlain = modifierPlain | ModifierKeys.Win;
 				}
+				// get the new hotkey
+				KeysConverter keysConverter = new KeysConverter();
+				Keys plainKey = (Keys)keysConverter.ConvertFromString(Preferences.Instance.PlainTextHotKey);
 				
+				// register the control combination as hot key.
+				plainHotKey.RegisterHotKey(modifierPlain, plainKey);
+			} catch (Exception ex) {
+				// could not register hotkey!
+				MessageBox.Show("Whoops! Could not register PLAIN hotkey:\n\n" + ex.Message + ex.StackTrace,
+				                "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+			}
+			
+			try {
+				htmlHotKey.UnregisterHotKeys();
 				ModifierKeys modifierHtml = ModifierKeys.None;
 				if (Preferences.Instance.ModifierHtmlAlt) {
 					modifierHtml = modifierHtml | ModifierKeys.Alt;
@@ -128,28 +156,22 @@ namespace PureTextPlus
 					modifierHtml = modifierHtml | ModifierKeys.Win;
 				}
 				
-				// remove current hotkeys
-				hotkey.UnregisterHotKeys();
 				
 				// get the new hotkey
 				KeysConverter keysConverter = new KeysConverter();
-				Keys keys = (Keys)keysConverter.ConvertFromString(Preferences.Instance.Hotkey);
-				Keys plainKey = (Keys)keysConverter.ConvertFromString(Preferences.Instance.PlainTextHotKey);
 				Keys htmlKey = (Keys)keysConverter.ConvertFromString(Preferences.Instance.HtmlTextHotKey);
 				
 				// register the control combination as hot key.
-				hotkey.RegisterHotKey(modifierPure, keys);
-				plainHotKey.RegisterHotKey(modifierPlain, plainKey);
 				htmlHotKey.RegisterHotKey(modifierHtml, htmlKey);
 				
 			} catch (Exception ex) {
 				// could not register hotkey!
-				MessageBox.Show("Whoops! Could not register hotkey:\n\n" + ex.Message + ex.StackTrace,
+				MessageBox.Show("Whoops! Could not register HTML hotkey:\n\n" + ex.Message + ex.StackTrace,
 				                "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
 			}
 			
 			// set the visibility of the icon
-		    this.notifyIcon.Visible = Preferences.Instance.TrayIconVisible;
+			this.notifyIcon.Visible = Preferences.Instance.TrayIconVisible;
 		}
 		#endregion
 		
@@ -165,7 +187,7 @@ namespace PureTextPlus
 			// Please use a unique name for the mutex to prevent conflicts with other programs
 			using (Mutex mtx = new Mutex(true, Preferences.APPLICATION_TITLE, out isFirstInstance))
 			{
-				if (isFirstInstance) 
+				if (isFirstInstance)
 				{
 					NotificationIcon notificationIcon = new NotificationIcon();
 					
@@ -176,8 +198,8 @@ namespace PureTextPlus
 					AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 					Application.Run();
 					notificationIcon.notifyIcon.Dispose();
-				} 
-				else 
+				}
+				else
 				{
 					// The application is already running
 				}

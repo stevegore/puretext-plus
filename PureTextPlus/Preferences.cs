@@ -61,12 +61,12 @@ namespace PureTextPlus
 		public bool ModifierPlainShift = false;
 		public bool ModifierPlainControl = false;
 		public bool ModifierPlainAlt = false;
-		public string PlainTextHotKey = "G";
+		public string PlainTextHotKey = "OemPeriod";
 		public bool ModifierHtmlWindows = true;
 		public bool ModifierHtmlShift = false;
 		public bool ModifierHtmlControl = false;
 		public bool ModifierHtmlAlt = false;
-		public string HtmlTextHotKey = "N";
+		public string HtmlTextHotKey = "Oemcomma";
 		
 		/// <summary>
 		/// Singleton access
@@ -103,8 +103,8 @@ namespace PureTextPlus
 				ModifierHtmlControl = Convert.ToBoolean(key.GetValue("ModifierHtmlControl", false));
 				ModifierHtmlAlt = Convert.ToBoolean(key.GetValue("ModifierHtmlAlt", false));
 				Hotkey = (string) key.GetValue("Hotkey", "V");
-				PlainTextHotKey = (string)key.GetValue("PlainTextHotKey", "G");
-				HtmlTextHotKey = (string)key.GetValue("HtmlTextHotKey", "N");
+				PlainTextHotKey = (string)key.GetValue("PlainTextHotKey", "OemPeriod");
+				HtmlTextHotKey = (string)key.GetValue("HtmlTextHotKey", "Oemcomma");
 				TrayIconVisible = Convert.ToBoolean(key.GetValue("TrayIconVisible", true));
 				PasteIntoActiveWindow = Convert.ToBoolean(key.GetValue("PasteIntoActiveWindow", true));
 			}
