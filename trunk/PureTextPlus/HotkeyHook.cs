@@ -36,7 +36,7 @@ namespace PureTextPlus
 	{
 		// Registers a hot key with Windows.
 		[DllImport("user32.dll")]
-		private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
+		private static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vk);
 		// Unregisters the hot key with Windows.
 		[DllImport("user32.dll")]
 		private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
@@ -112,7 +112,7 @@ namespace PureTextPlus
 			_currentId = _currentId + 1;
 
 			// register the hot key.
-			if (!RegisterHotKey(_window.Handle, _currentId, (uint)modifier, (uint)key))
+			if (!RegisterHotKey(_window.Handle, _currentId, Convert.ToInt16(modifier), Convert.ToInt16(key)))
 				throw new InvalidOperationException("Couldn’t register the hot key.");
 		}
 		
